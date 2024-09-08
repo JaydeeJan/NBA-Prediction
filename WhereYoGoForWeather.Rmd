@@ -1,0 +1,66 @@
+---
+title: "Assignment - Loading Data into a Data Frame"
+author: "Jayden Jiang"
+date: "2024-09-07"
+output: html_document
+---
+### Library
+
+```{r}
+library(tidyverse)
+library(dplyr)
+```
+
+
+### OVERVIEW
+
+The data I chose to work on is "where People Go To Check The Weather", analyzed how people check the weather and the impact on traditional and online weather sources. The data was collected in April from 6th to 10th with 938 respondents.
+
+The dataset was taken from: https://fivethirtyeight.com/features/weather-forecast-news-app-habits/
+
+```{r}
+# importing data from github
+
+weather_data <- read.csv ("https://raw.githubusercontent.com/JaydeeJan/NBA-Prediction/main/weather-check.csv")
+weather_data
+```
+
+```{r}
+# Creating a subset data frame that to people who check weather daily
+sub_weather <- weather_data %>% select(RespondentID, How.do.you.typically.check.the.weather., Age, )
+
+sub_weather
+```
+```{r}
+# rename the variables
+
+colnames(sub_weather) <- c("Checkweather", "MethodOfChecking", "Age")
+sub_weather
+
+sum(sub_weather$MethodOfChecking == "The default weather app on your phone")
+
+sum(sub_weather$MethodOfChecking == "A specific website or app (please provide the answer)")
+
+sum(sub_weather$MethodOfChecking == "Local TV News")
+
+sum(sub_weather$MethodOfChecking == "The Weather Channel")
+
+sum(sub_weather$MethodOfChecking == "Internet search")
+
+sum(sub_weather$MethodOfChecking == "Radio weather")
+
+sum(sub_weather$MethodOfChecking == "Newsletter")
+
+
+```
+
+### Conclusion
+
+From the finding, most people use the default weather app on their phone. 
+
+
+### Session Info:
+```{r}
+sessionInfo()
+```
+
